@@ -1,15 +1,16 @@
-import AnimatedCursor from "./components/AnimatedCursor/AnimatedCursor";
-import Features from "./components/Features/Features";
-import Header from "./components/Header/Header";
-import Partner from "./components/Partner/Partner";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import Chat from "./pages/chat";
 
 function App() {
   return (
     <>
-    <AnimatedCursor />
-      <Header />
-      <Partner />
-      <Features />
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/chat" element={<Chat />} />
+        </Routes>
+      </Router>
     </>
   );
 }

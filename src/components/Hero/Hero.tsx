@@ -10,7 +10,6 @@ const Hero = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}   className="hero-content">
         <p className="pill">Powered by Langflow and DataStax.</p>
-        
         <h1>
           Modern Analytics
           <br />

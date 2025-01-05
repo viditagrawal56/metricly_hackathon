@@ -17,7 +17,7 @@ const Navbar = () => {
           <a href="/">About Us</a>
         </li>
       </ul>
-      <Button content="Try Now" sm />
+      <Button content="Try Now" sm href="/chat" />
     </div>
   );
 };
