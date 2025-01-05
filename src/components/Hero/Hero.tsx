@@ -6,7 +6,7 @@ const Hero = () => {
   return (
     <div className="hero">
       <div className="hero-content">
-        <p className="pill">Powered by Langflow and DataStax.</p>
+        <p className="pill">Powered by Langflow and DataStax</p>
         <h1>
           Modern Analytics
           <br />
