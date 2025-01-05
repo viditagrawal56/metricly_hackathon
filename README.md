@@ -1,0 +1,2 @@
+# level_supermind_assignment
+Assignment for level supermind hackathon
