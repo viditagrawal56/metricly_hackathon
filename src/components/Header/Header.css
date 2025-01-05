@@ -1,0 +1,9 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  background: url("../../assets/header.jpg") no-repeat;
+  background-size: cover;
+  background-position-x: center;
+  background-position-y: top;
+  width: 100%;
+}
