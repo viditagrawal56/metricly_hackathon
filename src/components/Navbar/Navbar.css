@@ -21,11 +21,37 @@
   padding: 0px 12px;
 }
 .nav .nav-link a {
-  font-size: 1rem;
+  font-size: 1.1rem;
   line-height: 1.5rem;
   color: #ececec;
   transition: 0.3s;
+  padding: 8px 16px;
+  position: relative;
+  z-index: 1;
 }
+
+.nav .nav-link a:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50px;
+  opacity: 0;
+  transition: all 0.3s ease;
+  transform: scale(0.8);
+  backdrop-filter: blur(10.5px);
+  -webkit-backdrop-filter: blur(6.5px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.nav .nav-link a:hover:before {
+  opacity: 1;
+  transform: scale(1);
+}
+
 .nav .nav-link a:hover {
   color: #fff;
 }
