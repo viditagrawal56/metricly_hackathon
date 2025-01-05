@@ -1,0 +1,78 @@
+
+.partner {
+    margin: 0 30px;
+    padding: 60px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden; 
+  }
+  
+  .partner p {
+    text-align: center;
+    font-weight: 500;
+    font-size: 1.25rem;
+    line-height: 1.625rem;
+    margin-bottom: 40px;
+    color: #FFFFFFCC;
+  }
+  
+  .slider-wrapper {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    visibility: visible ;
+    opacity: 1 
+  }
+  
+  /* Important styles for slider functionality */
+  .slick-slider {
+    width: 100%;
+    visibility: visible;
+    opacity: 1 
+  }
+  
+  .slick-list {
+    visibility: visible ;
+    opacity: 1 
+  }
+  
+  .slick-track {
+    display: flex ;
+    align-items: center;
+    visibility: visible ;
+    opacity: 1 ;
+  }
+  
+  .slide-item {
+    display: flex ;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10px;
+    visibility: visible ;
+    opacity: 1 ;
+  }
+  
+  .partner img {
+    width: 100%;
+    max-width: 120px;
+    height: 60px;
+    object-fit: contain;
+  }
+  
+  /* Hide default slick dots */
+  .slick-dots {
+    display: none ;
+  }
+  
+  @media (max-width: 575px) {
+    .partner {
+      margin: 0 15px;
+      padding: 40px 0;
+    }
+    
+    .partner img {
+      max-width: 100px;
+      height: 50px;
+    }
+  }
