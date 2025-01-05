@@ -7,7 +7,7 @@ interface ButtonProps {
   sm?: boolean;
 }
 
-const Button = ({ content = "Button", alt, sm, href = "/chat" }: ButtonProps) => {
+const Button = ({ content = "Button", alt, sm, href = "/" }: ButtonProps) => {
   return (
     <a href={href} className={`btn ${alt && "btn-alt"} ${sm && "btn-sm"}`}>
       {content}
