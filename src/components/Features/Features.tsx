@@ -14,20 +14,28 @@ const Features = () => {
     />
   ));
   return (
-    <div  className="features" id="features">
-      <motion.div initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }} className="features-title">
+    <div className="features" id="features">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="features-title"
+      >
         <h1>Features that work for your future.</h1>
         <p>
-          Check out our amazing features and experience the power of Vaultflow
+          Check out our amazing features and experience the power of Metricly
           for yourself.
         </p>
       </motion.div>
-      <motion.div initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay:  0.1 }} className="features-card">{Cards}</motion.div>
+      <motion.div
+        initial={{ opacity: 0, x: 20 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.1 }}
+        className="features-card"
+      >
+        {Cards}
+      </motion.div>
     </div>
   );
 };

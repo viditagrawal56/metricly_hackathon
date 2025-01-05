@@ -6,9 +6,12 @@ import HeroImg from "../../assets/hero.png";
 const Hero = () => {
   return (
     <div className="hero">
-      <motion.div initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}   className="hero-content">
+      <motion.div
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.8 }}
+        className="hero-content"
+      >
         <p className="pill">Powered by Langflow and DataStax.</p>
         <h1>
           Modern Analytics
@@ -20,12 +23,26 @@ const Hero = () => {
           cutting-edge technology
         </p>
         <div className="btns">
-          <Button content="Try Now" />
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.85 }}
+            whileHover={{
+              scale: 1.05,
+              y: -3,
+              transition: { duration: 0.2 },
+            }}
+          >
+            <Button content="Try Now" />
+          </motion.div>
         </div>
       </motion.div>
-      <motion.div initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}  className="hero-img">
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.8 }}
+        className="hero-img"
+      >
         <img src={HeroImg} alt="hero" />
       </motion.div>
     </div>
