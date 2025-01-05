@@ -1,0 +1,61 @@
+.features {
+  margin: 0 20px;
+  padding-top: 24px;
+}
+.features .features-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  gap: 24px;
+  max-width: 470px;
+  margin: 0 auto;
+  margin-bottom: 80px;
+  background: url("./features-bg.png") no-repeat center;
+  background-size: cover;
+}
+
+.features .features-title h1 {
+  font-size: 3rem;
+  font-weight: 500;
+  line-height: 3.6rem;
+  max-width: 450px;
+}
+.features .features-title p {
+  font-size: 1.125rem;
+  font-weight: 400;
+  line-height: 1.8rem;
+}
+.features .features-card {
+  margin: 0 100px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+@media (max-width: 991px) {
+  .features .features-card {
+    align-items: center;
+    flex-direction: column;
+  }
+}
+@media (max-width: 767px) {
+  .features .features-card {
+    margin: 0 50px;
+  }
+}
+@media (max-width: 575px) {
+  .features .features-title {
+    margin-bottom: 20px;
+  }
+  .features .features-card {
+    margin: 0 20px;
+  }
+}
+@media (max-width: 375px) {
+  .features .features-card {
+    margin: 0 10px;
+  }
+}
