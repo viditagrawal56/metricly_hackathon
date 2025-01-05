@@ -1,0 +1,43 @@
+/* AnimatedCursor.css */
+.cursor-dot {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.1s ease-out;
+    transform: translate(-50%, -50%);
+  }
+  
+  .cursor-dot-inner {
+    width: 15px;
+    height: 15px;
+    background-color: #07c7f7;
+    border-radius: 50%;
+    opacity: 0.7;
+    transition: transform 0.2s ease-out;
+  }
+  
+  .cursor-dot.pointer {
+    transform: translate(-50%, -50%) scale(2);
+  }
+  
+  .cursor-dot.pointer .cursor-dot-inner {
+    animation: cursor-pulse 1s infinite;
+  }
+  
+  @keyframes cursor-pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  @media (pointer: coarse) {
+    .cursor-dot {
+      display: none;
+    }
+  }
