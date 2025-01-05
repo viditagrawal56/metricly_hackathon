@@ -60,7 +60,7 @@ const Partner = () => {
   return (
     <div className="partner">
       <p>
-        Trusted by teams at over 1,000 of the world's leading organizations
+        Enhancing the Analysis with New Technology
       </p>
       <div className="slider-wrapper">
         <Slider {...settings}>
