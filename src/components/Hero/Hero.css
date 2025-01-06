@@ -28,11 +28,12 @@
   border: 1px solid rgba(255, 255, 255, 0.18);
 }
 .hero-content h1 {
+  padding: 20px 0px;
   font-weight: 500;
   font-size: 5rem;
   text-align: center;
   line-height: 5rem;
-  margin-bottom: 24px;
+  margin-bottom: 12px;
   background: -webkit-linear-gradient(274deg, #ececec, #ececec0a);
   background-clip: text;
   -webkit-text-fill-color: transparent;
