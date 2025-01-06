@@ -37,11 +37,30 @@ A modern analytics Application built with React, featuring intelligent insights 
    ```bash
    npm run dev
    ```
+5. Navigate to backend folder
+    ```bash
+    cd backend
+    ```
+6. Install dependencies
+    ``` bash
+    npm install
+    ```
+7. build the backend
+    ```bash
+    npx tsc -b
+    ```
+8. Start the backend
+    ```bash
+    node dist/index.js
+    ```
+Application is up and running
 
 ## 📂 Folder Structure
 
 ```plaintext
 metricly_hackathon/
+├── backend/  
+    ├── src/ 
 ├── public/             # Static files
 ├── src/
 │   ├── assets/         # Images, fonts, etc.
