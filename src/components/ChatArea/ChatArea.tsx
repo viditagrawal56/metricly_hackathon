@@ -13,7 +13,7 @@ const ChatArea: React.FC = () => {
   const [ws, setWs] = useState<WebSocket | null>(null);
 
   useEffect(() => {
-    const socket = new WebSocket("ws://localhost:3000");
+    const socket = new WebSocket("wss://metricly-hackathon.onrender.com");
     setWs(socket);
 
     socket.onopen = () => {
@@ -49,7 +49,7 @@ const ChatArea: React.FC = () => {
 
     setMessages((prev) => [...prev, { type: "user", text: input }]);
     try {
-      const response = await fetch("http://localhost:3000/chat", {
+      const response = await fetch("https://metricly-hackathon.onrender.com/chat", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
