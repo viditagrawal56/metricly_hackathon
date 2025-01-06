@@ -1,3 +1,25 @@
 .chat {
-  background: #171716;
+  min-height: 100vh;
+  position: relative;
+}
+
+.chat::before {
+  content: "";
+  background-image: url("../assets/chat_bg.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.38;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+@media screen and (max-width: 768px) {
+  .chat::before {
+    background-size: 200% auto;
+  }
 }
