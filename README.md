@@ -53,7 +53,7 @@ A modern analytics Application built with React, featuring intelligent insights 
     ```bash
     node dist/index.js
     ```
-Application is up and running
+🚀Application is up and running
 
 ## 📂 Folder Structure
 
