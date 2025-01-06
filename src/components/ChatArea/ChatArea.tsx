@@ -42,7 +42,7 @@ const ChatArea: React.FC = () => {
       socket.close();
     };
   }, []);
-
+console.log(ws)
   const sendMessage = async () => {
     if (input.trim() === "" || !requestId) return;
       setInput(""); 
