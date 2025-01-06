@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import "./Pricing.css";
+import Button from "../Button/Button";
 
 const Pricing = () => {
   const plans = [
@@ -11,9 +12,9 @@ const Pricing = () => {
         "5 Projects",
         "2 Team Members",
         "Basic Support",
-        "1GB Storage"
+        "1GB Storage",
       ],
-      popular: false
+      popular: false,
     },
     {
       name: "Standard",
@@ -23,9 +24,9 @@ const Pricing = () => {
         "15 Projects",
         "10 Team Members",
         "Priority Support",
-        "10GB Storage"
+        "10GB Storage",
       ],
-      popular: true
+      popular: true,
     },
     {
       name: "Advanced",
@@ -35,10 +36,10 @@ const Pricing = () => {
         "Unlimited Projects",
         "Unlimited Team Members",
         "24/7 Support",
-        "100GB Storage"
+        "100GB Storage",
       ],
-      popular: false
-    }
+      popular: false,
+    },
   ];
 
   return (
@@ -52,7 +53,7 @@ const Pricing = () => {
         <h1>Choose Your Perfect Plan</h1>
         <p>Select the best plan that fits your needs</p>
       </motion.div>
-      
+
       <div className="pricing-cards">
         {plans.map((plan, index) => (
           <motion.div
@@ -61,7 +62,7 @@ const Pricing = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: index * 0.2 }}
-            className={`pricing-card ${plan.popular ? 'popular' : ''}`}
+            className={`pricing-card ${plan.popular ? "popular" : ""}`}
           >
             {plan.popular && <div className="popular-badge">Most Popular</div>}
             <h2>{plan.name}</h2>
@@ -74,7 +75,7 @@ const Pricing = () => {
                 <li key={i}>{feature}</li>
               ))}
             </ul>
-            <button className="select-plan">Get Started</button>
+            <Button content="Get Started" href="#" lg />
           </motion.div>
         ))}
       </div>

@@ -21,10 +21,10 @@ const Features = () => {
         viewport={{ once: true }}
         className="features-title"
       >
-        <h1>Features that work for your future.</h1>
+        <h1>Features That Work For Your Future</h1>
         <p>
           Check out our amazing features and experience the power of Metricly
-          for yourself.
+          for yourself
         </p>
       </motion.div>
       <motion.div

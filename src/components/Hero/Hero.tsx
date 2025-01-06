@@ -12,7 +12,7 @@ const Hero = () => {
         transition={{ duration: 0.8 }}
         className="hero-content"
       >
-        <p className="pill">Powered by Langflow and DataStax.</p>
+        <p className="pill">✨ Powered by Langflow and DataStax</p>
         <h1>
           Modern Analytics
           <br />
@@ -33,7 +33,7 @@ const Hero = () => {
               transition: { duration: 0.2 },
             }}
           >
-            <Button content="Try Now" href="/chat" />
+            <Button content="Try Now →" href="/chat" />
           </motion.div>
         </div>
       </motion.div>

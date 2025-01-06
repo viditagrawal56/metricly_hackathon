@@ -18,14 +18,17 @@
 
 .features .features-title h1 {
   font-size: 3rem;
-  font-weight: 500;
   line-height: 3.6rem;
   max-width: 450px;
+  background: linear-gradient(45deg, #fff, #a8b8ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 .features .features-title p {
-  font-size: 1.125rem;
-  font-weight: 400;
   line-height: 1.8rem;
+  font-size: 1.2rem;
+  color: #94a3b8;
 }
 .features .features-card {
   margin: 0 100px;

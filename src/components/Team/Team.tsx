@@ -57,14 +57,15 @@ const Team = () => {
 
   return (
     <motion.div
+      id="team"
       className="team-section"
       initial="hidden"
       whileInView="show"
       viewport={{ once: true }}
     >
       <motion.div className="team-title" variants={item}>
-        <h2>Meet Our Team</h2>
-        <p>The Developers Behind Metricly</p>
+        <h1>Meet Our Team</h1>
+        <p>The developers behind Metricly</p>
       </motion.div>
       <motion.div className="team-members" variants={container}>
         {teamMembers.map((member, index) => (

@@ -1,5 +1,5 @@
 .team-section {
-  padding: 80px 20px;
+  padding: 24px 20px;
   margin: 0 auto;
   max-width: 1200px;
 }
@@ -9,20 +9,20 @@
   margin-bottom: 60px;
 }
 
-.team-title h2 {
+.team-title h1 {
   font-size: 3rem;
-  font-weight: 500;
   line-height: 3.6rem;
   margin-bottom: 16px;
-  background: -webkit-linear-gradient(274deg, #ececec, #ececec0a);
+  background: linear-gradient(45deg, #fff, #a8b8ff);
+  -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .team-title p {
-  font-size: 1.125rem;
-  color: #ecececa6;
+  font-size: 1.2rem;
   line-height: 1.8rem;
+  color: #94a3b8;
 }
 
 .team-members {

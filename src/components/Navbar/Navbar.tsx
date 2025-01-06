@@ -25,11 +25,10 @@ const Navbar = () => {
           <a href="#pricing">Pricing</a>
         </li>
         <li className="nav-link">
-
-          <a href="/">About Us</a>
+          <a href="#team">About Us</a>
         </li>
       </ul>
-      <Button content="Try Now" sm href="/chat" />
+      <Button content="Try Now  →" sm href="/chat" />
     </motion.div>
   );
 };

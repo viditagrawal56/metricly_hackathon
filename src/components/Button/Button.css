@@ -30,6 +30,11 @@
 .btn-sm {
   padding: 8px 20px;
 }
+
+.btn-lg {
+  padding: 10px 35px;
+}
+
 @media (max-width: 991px) {
   .btn {
     padding: 6px 16px;
