@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import Button from "../Button/Button";
 import Logo from "../Logo/Logo";
 import "./Navbar.css";
-
 const Navbar = () => {
   return (
     <motion.div
@@ -20,12 +19,13 @@ const Navbar = () => {
       <Logo />
       <ul className="nav">
         <li className="nav-link">
-          <a href="/">Features</a>
+          <a href="#features">Features</a>
         </li>
         <li className="nav-link">
-          <a href="/">Pricing</a>
+          <a href="#pricing">Pricing</a>
         </li>
         <li className="nav-link">
+
           <a href="/">About Us</a>
         </li>
       </ul>
