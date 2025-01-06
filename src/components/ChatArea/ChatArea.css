@@ -3,56 +3,205 @@
   flex-direction: column;
   min-height: 100vh;
   color: #ececec;
-  padding: 20px;
+  padding: 10px;
+  position: relative;
+  z-index: 1;
 }
 
 .chat-container {
-  padding: 20px;
-  width: 100%;
-  max-width: 960px;
+  padding: clamp(15px, 3vw, 30px);
+  width: 95%;
+  max-width: 1000px;
   margin: 0 auto;
-  background: rgba(255, 255, 255, 0.119);
-  border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(6.4px);
-  -webkit-backdrop-filter: blur(6.4px);
+  background: rgba(126, 90, 208, 0.116);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(10.5px);
+  -webkit-backdrop-filter: blur(6.5px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 20px;
+  transition: all 0.3s ease;
 }
 
 .messages {
-  height: 400px;
+  height: calc(85vh - 100px);
   overflow-y: auto;
   margin-bottom: 20px;
+  padding: 20px;
+}
+
+.message {
+  max-width: 85%;
+  margin: 16px 0;
+  padding: clamp(12px, 2vw, 16px) clamp(15px, 2vw, 20px);
+  border-radius: 16px;
+  animation: fadeIn 0.3s ease-in;
+  line-height: 1.5;
+  font-size: clamp(0.875rem, 2vw, 0.95rem);
+}
+
+.user-message {
+  background: linear-gradient(135deg, #3b82f6, #9333ea);
+  margin-left: auto;
+  border-bottom-right-radius: 4px;
+  box-shadow: 0 4px 15px rgba(147, 51, 234, 0.2);
+}
+
+.response-message {
+  background: rgba(255, 255, 255, 0.1);
+  margin-right: auto;
+  border-bottom-left-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .input-area {
   display: flex;
   gap: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 3px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  flex-wrap: wrap;
 }
 
 .input-field {
   flex-grow: 1;
-  background-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0);
   color: white;
-  padding: 10px;
+  padding: 15px 20px;
   border: none;
-  border-radius: 4px;
+  border-radius: 12px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  min-width: 200px;
+  width: 100%;
 }
 
 .input-field::placeholder {
   color: #ccc;
 }
 
+.input-field:focus {
+  outline: none;
+}
+
 .send-button {
-  background-color: #ececec;
-  color: #0b081c;
-  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: linear-gradient(135deg, #3b82f6, #9333ea);
+  color: white;
+  padding: clamp(10px, 2vw, 15px) clamp(20px, 3vw, 30px);
   border: none;
-  border-radius: 4px;
+  border-radius: 12px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  min-width: 100px;
+  width: 100%;
 }
 
 .send-button:hover {
-  background-color: #fff;
-  border-color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(147, 51, 234, 0.3);
+  filter: brightness(1.1);
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Add custom scrollbar */
+.messages::-webkit-scrollbar {
+  width: 8px;
+}
+
+.messages::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+.messages::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+.loading-message {
+  background: rgba(255, 255, 255, 0.1);
+  margin-right: auto;
+  border-bottom-left-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.loading-dots {
+  display: flex;
+  gap: 4px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  animation: bounce 1.4s infinite ease-in-out;
+}
+
+.dot:nth-child(1) {
+  animation-delay: -0.32s;
+}
+.dot:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+@keyframes bounce {
+  0%,
+  80%,
+  100% {
+    transform: scale(0);
+  }
+  40% {
+    transform: scale(1);
+  }
+}
+
+@media screen and (min-width: 480px) {
+  .input-field {
+    width: auto;
+    flex: 1;
+  }
+
+  .send-button {
+    width: auto;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .chat-container {
+    padding: 15px;
+  }
+
+  .input-area {
+    gap: 8px;
+  }
+
+  .messages {
+    padding: 10px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .message {
+    max-width: 90%;
+  }
 }
