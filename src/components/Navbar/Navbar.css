@@ -11,6 +11,9 @@
   -webkit-backdrop-filter: blur(6.5px);
   border: 1px solid rgba(255, 255, 255, 0.18);
 }
+html {
+  scroll-behavior: smooth;
+}
 .nav {
   display: flex;
   align-items: center;
