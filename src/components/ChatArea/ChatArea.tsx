@@ -7,9 +7,9 @@ interface Message {
 }
 
 const ChatArea: React.FC = () => {
-  const [messages, setMessages] = useState<Message[]>([]); 
+  const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState<string>("");
-  const [requestId, setRequestId] = useState<string>(""); 
+  const [requestId, setRequestId] = useState<string>("");
   const [ws, setWs] = useState<WebSocket | null>(null);
 
   useEffect(() => {
@@ -23,17 +23,17 @@ const ChatArea: React.FC = () => {
     socket.onmessage = (event: MessageEvent) => {
       const data = JSON.parse(event.data);
       if (data.type === "requestId") {
-
         setRequestId(data.requestId);
       } else if (data.type === "response") {
-
-        setMessages((prev) => [...prev, { type: "response", text: data.message }]);
+        setMessages((prev) => [
+          ...prev,
+          { type: "response", text: data.message },
+        ]);
       } else if (data.type === "error") {
-
         setMessages((prev) => [...prev, { type: "error", text: data.message }]);
       }
     };
-
+    console.log(ws);
     socket.onclose = () => {
       console.log("WebSocket connection closed");
     };
@@ -45,7 +45,7 @@ const ChatArea: React.FC = () => {
 
   const sendMessage = async () => {
     if (input.trim() === "" || !requestId) return;
-      setInput(""); 
+    setInput("");
 
     setMessages((prev) => [...prev, { type: "user", text: input }]);
     try {
@@ -63,8 +63,6 @@ const ChatArea: React.FC = () => {
       if (!response.ok) {
         throw new Error("Failed to send message");
       }
-
-      // setInput(""); 
     } catch (error) {
       console.error("Error sending message:", error);
     }
@@ -77,7 +75,9 @@ const ChatArea: React.FC = () => {
           {messages.map((msg, index) => (
             <div
               key={index}
-              className={`message ${msg.type === "user" ? "user-message" : "response-message"}`}
+              className={`message ${
+                msg.type === "user" ? "user-message" : "response-message"
+              }`}
             >
               {msg.text}
             </div>
