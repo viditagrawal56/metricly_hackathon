@@ -1,0 +1,121 @@
+.team-section {
+  padding: 80px 20px;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.team-title {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.team-title h2 {
+  font-size: 3rem;
+  font-weight: 500;
+  line-height: 3.6rem;
+  margin-bottom: 16px;
+  background: -webkit-linear-gradient(274deg, #ececec, #ececec0a);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.team-title p {
+  font-size: 1.125rem;
+  color: #ecececa6;
+  line-height: 1.8rem;
+}
+
+.team-members {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.team-card {
+  flex: 1;
+  min-width: 280px;
+  max-width: 350px;
+  padding: 40px;
+  text-align: center;
+  border-radius: 20px;
+  background: rgba(126, 90, 208, 0.116);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(10.5px);
+  -webkit-backdrop-filter: blur(6.5px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  transition: all 0.3s ease;
+}
+
+.team-card:hover {
+  transform: translateY(-5px);
+  background: rgba(126, 90, 208, 0.15);
+}
+
+.team-card h3 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.team-card .role {
+  color: #ecececa6;
+  font-size: 1rem;
+  margin-bottom: 24px;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.social-links a {
+  color: #ececec;
+  font-size: 1.5rem;
+  transition: 0.3s;
+}
+
+.social-links a:hover {
+  color: #fff;
+  transform: translateY(-3px);
+}
+
+.profile-image-wrapper {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.18);
+}
+
+.profile-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 991px) {
+  .team-card {
+    min-width: 250px;
+    padding: 30px;
+  }
+}
+
+@media (max-width: 575px) {
+  .team-section {
+    padding: 40px 20px;
+  }
+
+  .team-title h2 {
+    font-size: 2rem;
+    line-height: 2.4rem;
+  }
+
+  .team-card {
+    min-width: 100%;
+    padding: 25px;
+  }
+}
