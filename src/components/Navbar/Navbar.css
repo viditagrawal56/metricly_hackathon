@@ -58,6 +58,24 @@ html {
 .nav .nav-link a:hover {
   color: #fff;
 }
+
+.hamburger {
+  display: none;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  padding: 5px;
+}
+
+.hamburger span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px 0;
+  background: #fff;
+  transition: 0.3s;
+}
+
 @media (max-width: 991px) {
   .navbar {
     padding: 8px 20px;
@@ -73,17 +91,75 @@ html {
 }
 @media (max-width: 767px) {
   .navbar {
-    flex-wrap: wrap;
+    position: relative;
     margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
   }
+
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 1002;
+  }
+
+  .hamburger span {
+    background: #ffffff;
+    width: 25px;
+    height: 2px;
+    margin: 4px 0;
+    transition: 0.3s;
+  }
+
+  .hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+  }
+
+  .navbar > :first-child,
+  .hamburger {
+    position: relative;
+    z-index: 1002;
+  }
+
   .nav {
-    gap: 16px;
-    order: 3;
-    flex: 100%;
-    padding: 30px 0 20px 0;
+    position: fixed;
+    top: 0;
+    right: -120%;
+    height: 100vh;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: 0.4s ease;
+    z-index: 1001;
   }
+
+  .nav.active {
+    right: 0;
+  }
+
   .nav .nav-link {
-    padding: 0 6px;
+    margin: 15px 0;
+  }
+
+  .nav .nav-link a {
+    font-size: 1.2rem;
+  }
+
+  .navbar > a[href="/chat"] {
+    display: none;
   }
 }
 @media (max-width: 575px) {
@@ -96,13 +172,13 @@ html {
     padding: 0px;
   }
   .nav .nav-link a {
-    font-size: 12px;
+    font-size: 1.1rem;
   }
 }
 @media (max-width: 375px) {
   .navbar {
-    flex-direction: column;
-    gap: 30px;
+    flex-direction: row;
+    padding: 12px 20px;
   }
   .nav {
     padding: 0;

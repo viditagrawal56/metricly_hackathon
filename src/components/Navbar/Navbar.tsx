@@ -2,7 +2,15 @@ import { motion } from "framer-motion";
 import Button from "../Button/Button";
 import Logo from "../Logo/Logo";
 import "./Navbar.css";
+import { useState } from "react";
+
 const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
     <motion.div
       className="navbar"
@@ -17,15 +25,29 @@ const Navbar = () => {
       }}
     >
       <Logo />
-      <ul className="nav">
+      <button
+        className={`hamburger ${isMenuOpen ? "active" : ""}`}
+        onClick={toggleMenu}
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul className={`nav ${isMenuOpen ? "active" : ""}`}>
         <li className="nav-link">
-          <a href="#features">Features</a>
+          <a href="#features" onClick={() => setIsMenuOpen(false)}>
+            Features
+          </a>
         </li>
         <li className="nav-link">
-          <a href="#pricing">Pricing</a>
+          <a href="#pricing" onClick={() => setIsMenuOpen(false)}>
+            Pricing
+          </a>
         </li>
         <li className="nav-link">
-          <a href="#team">About Us</a>
+          <a href="#team" onClick={() => setIsMenuOpen(false)}>
+            About Us
+          </a>
         </li>
       </ul>
       <Button content="Try Now  →" sm href="/chat" />
