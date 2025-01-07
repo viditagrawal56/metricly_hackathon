@@ -1,4 +1,4 @@
-import { div } from "framer-motion/client";
+
 import ChatArea from "../components/ChatArea/ChatArea";
 import "./Chat.css";
 import Navbar from "../components/Navbar/Navbar";
