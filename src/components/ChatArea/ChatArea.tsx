@@ -200,13 +200,12 @@ const ChatArea: React.FC = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Handle placeholder animation
   useEffect(() => {
-    if (input.trim() !== "") return; // Stop cycling when user starts typing
+    if (input.trim() !== "") return;
 
     const interval = setInterval(() => {
       setPlaceholderIndex((prevIndex) => (prevIndex + 1) % placeholders.length);
-    }, 2500); // Change placeholder every 2.5 seconds
+    }, 3000); // Change placeholder every 2.5 seconds
 
     return () => clearInterval(interval);
   }, [input, placeholders.length]);
@@ -280,7 +279,7 @@ const ChatArea: React.FC = () => {
                   transition={{ duration: 0.2 }}
                   className="initial-content"
                 >
-                  <h2>AI Knows Your Social Secrets—Let’s Talk!</h2>
+                  <h2>Your Social Metrics, Simplified - Let's Chat!</h2>
                   <div className="social-words">
                     <span>Analytics</span>
                     <span>Engagement</span>

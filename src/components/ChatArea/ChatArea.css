@@ -146,8 +146,7 @@
 
 .social-words span {
   font-size: 1.2rem;
-  color: #a78bfa;
-  font-weight: bold;
+  color: #a78bfacd;
 }
 
 @keyframes fadeIn {
