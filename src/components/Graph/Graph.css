@@ -1,0 +1,99 @@
+.graph-container {
+  display: grid;
+  grid-template-areas:
+    "distribution performance"
+    "engagement engagement";
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  padding: 16px;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.chart-wrapper {
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 16px;
+  padding: 16px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease;
+}
+.chart-wrapper h2 {
+  color: #ececec;
+  font-size: 1rem;
+  margin-bottom: 12px;
+  text-align: center;
+}
+.chart-wrapper > div {
+  flex-grow: 1;
+}
+.chart-wrapper.distribution { grid-area: distribution; }
+.chart-wrapper.performance { grid-area: performance; }
+.chart-wrapper.engagement {
+  grid-area: engagement;
+  height: 500px;
+}
+@media (max-width: 1024px) {
+  .graph-container {
+    grid-template-areas:
+      "distribution"
+      "performance"
+      "engagement";
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .chart-wrapper {
+    height: 350px;
+  }
+  .chart-wrapper.engagement {
+    height: 400px;
+  }
+}
+@media (max-width: 768px) {
+  .graph-container {
+    padding: 12px;
+    gap: 20px;
+  }
+  .chart-wrapper {
+    padding: 12px;
+    border-radius: 12px;
+    height: 300px;
+  }
+  .chart-wrapper h2 {
+    font-size: 0.875rem;
+    margin-bottom: 8px;
+  }
+.chart-wrapper.engagement {
+    height: 350px;
+  }
+}
+
+@media (max-width: 480px) {
+  .graph-container {
+    gap: 16px;
+  }
+
+  .chart-wrapper {
+    height: 250px;
+    padding: 8px;
+    border-radius: 8px;
+  }
+
+  .chart-wrapper h2 {
+    font-size: 0.75rem;
+  }
+
+  .chart-wrapper.engagement {
+    height: 300px;
+  }
+}
+
+@supports (-webkit-touch-callout: none) {
+  .chart-wrapper {
+    -webkit-backdrop-filter: blur(10px);
+  }
+}
