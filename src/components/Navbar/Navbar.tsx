@@ -2,7 +2,14 @@ import { motion } from "framer-motion";
 import Button from "../Button/Button";
 import Logo from "../Logo/Logo";
 import "./Navbar.css";
-const Navbar = ({content , href , bool} : any) => {
+
+interface NavbarProps {
+  content: string;
+  href: string;
+  bool: boolean;
+}
+
+const Navbar = ({ content, href, bool }: NavbarProps) => {
   return (
     <motion.div
       className="navbar"
@@ -17,20 +24,20 @@ const Navbar = ({content , href , bool} : any) => {
       }}
     >
       <Logo />
-      {
-        bool && <ul className="nav">
-        <li className="nav-link">
-          <a href="#features">Features</a>
-        </li>
-        <li className="nav-link">
-          <a href="#pricing">Pricing</a>
-        </li>
-        <li className="nav-link">
-          <a href="#team">About Us</a>
-        </li>
-      </ul>
-      }
-      
+      {bool && (
+        <ul className="nav">
+          <li className="nav-link">
+            <a href="#features">Features</a>
+          </li>
+          <li className="nav-link">
+            <a href="#pricing">Pricing</a>
+          </li>
+          <li className="nav-link">
+            <a href="#team">About Us</a>
+          </li>
+        </ul>
+      )}
+
       <Button content={content} sm href={href} />
     </motion.div>
   );
