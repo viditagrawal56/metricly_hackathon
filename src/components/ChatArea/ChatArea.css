@@ -64,10 +64,15 @@
   flex-wrap: wrap;
   position: relative;
   align-items: center;
+  justify-content: space-between;
+}
+
+.placeholder-input {
+  display: flex;
+  align-items: center;
 }
 
 .input-field {
-  flex-grow: 1;
   background: rgba(255, 255, 255, 0);
   color: white;
   padding: 15px 20px;
@@ -156,7 +161,6 @@
   }
 }
 
-/* Add custom scrollbar */
 .messages::-webkit-scrollbar {
   width: 8px;
 }
@@ -221,6 +225,9 @@
   .send-button {
     width: auto;
   }
+  .placeholder-wrapper {
+    font-size: 13px;
+  }
 }
 
 @media screen and (max-width: 480px) {
@@ -234,6 +241,9 @@
 
   .messages {
     padding: 10px;
+  }
+  .placeholder-wrapper {
+    font-size: 12px;
   }
 }
 
@@ -256,4 +266,15 @@
 .parsed-response li {
   margin-left: 1.5rem;
   list-style-type: disc;
+}
+
+@media screen and (max-width: 1024px) {
+  .chat-area {
+    margin-top: 30px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .placeholder-wrapper {
+    font-size: 16px;
+  }
 }

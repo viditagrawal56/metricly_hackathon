@@ -206,7 +206,7 @@ const ChatArea: React.FC = () => {
 
     const interval = setInterval(() => {
       setPlaceholderIndex((prevIndex) => (prevIndex + 1) % placeholders.length);
-    }, 1500); // Change placeholder every 1.5 seconds
+    }, 2500); // Change placeholder every 2.5 seconds
 
     return () => clearInterval(interval);
   }, [input, placeholders.length]);
@@ -311,32 +311,35 @@ const ChatArea: React.FC = () => {
             <div ref={messagesEndRef} />
           </div>
           <div className="input-area">
-            <div className="placeholder-wrapper">
-              {/* Placeholder Animation */}
-              <AnimatePresence mode="wait">
-                {input.trim() === "" && (
-                  <motion.div
-                    key={placeholderIndex}
-                    initial={{ y: 20, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    exit={{ y: -20, opacity: 0 }}
-                    transition={{ duration: 0.6 }}
-                    className="placeholder-text"
-                  >
-                    {placeholders[placeholderIndex]}
-                  </motion.div>
-                )}
-              </AnimatePresence>
+            <div className="placeholder-input">
+              <div className="placeholder-wrapper">
+                {/* Placeholder Animation */}
+                <AnimatePresence mode="wait">
+                  {input.trim() === "" && (
+                    <motion.div
+                      key={placeholderIndex}
+                      initial={{ y: 20, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      exit={{ y: -20, opacity: 0 }}
+                      transition={{ duration: 0.7 }}
+                      className="placeholder-text"
+                    >
+                      {placeholders[placeholderIndex]}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+              <input
+                type="text"
+                className="input-field"
+                value={input}
+                onChange={handleInputChange}
+                onKeyDown={handleKeyPress}
+                onFocus={() => setInput("")} // Optionally clear placeholder on focus
+                placeholder="" // Leave native placeholder empty to use custom one
+              />
             </div>
-            <input
-              type="text"
-              className="input-field"
-              value={input}
-              onChange={handleInputChange}
-              onKeyDown={handleKeyPress}
-              onFocus={() => setInput("")} // Optionally clear placeholder on focus
-              placeholder="" // Leave native placeholder empty to use custom one
-            />
+
             <button
               className="send-button"
               onClick={sendMessage}
