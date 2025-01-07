@@ -3,9 +3,10 @@
   flex-direction: column;
   min-height: 100vh;
   color: #ececec;
-  padding: 10px;
+  padding: 0;
   position: relative;
   z-index: 1;
+  margin-top: -50px;
 }
 
 .chat-container {
@@ -61,10 +62,17 @@
   border-radius: 16px;
   border: 1px solid rgba(255, 255, 255, 0.08);
   flex-wrap: wrap;
+  position: relative;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.placeholder-input {
+  display: flex;
+  align-items: center;
 }
 
 .input-field {
-  flex-grow: 1;
   background: rgba(255, 255, 255, 0);
   color: white;
   padding: 15px 20px;
@@ -72,12 +80,20 @@
   border-radius: 12px;
   font-size: 1rem;
   transition: all 0.3s ease;
-  min-width: 200px;
+  min-width: 45vw;
   width: 100%;
 }
 
 .input-field::placeholder {
-  color: #ccc;
+  color: #ccccccc4;
+  transition: all 0.3s ease;
+}
+.placeholder-wrapper {
+  position: absolute;
+  left: 50px;
+  pointer-events: none;
+  color: #999;
+  font-size: 16px;
 }
 
 .input-field:focus {
@@ -108,6 +124,32 @@
   text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
 }
 
+.initial-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+}
+
+.initial-content h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #ffffff;
+}
+
+.social-words {
+  display: flex;
+  gap: 1rem;
+}
+
+.social-words span {
+  font-size: 1.2rem;
+  color: #a78bfa;
+  font-weight: bold;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -119,7 +161,6 @@
   }
 }
 
-/* Add custom scrollbar */
 .messages::-webkit-scrollbar {
   width: 8px;
 }
@@ -184,6 +225,9 @@
   .send-button {
     width: auto;
   }
+  .placeholder-wrapper {
+    font-size: 13px;
+  }
 }
 
 @media screen and (max-width: 480px) {
@@ -197,6 +241,13 @@
 
   .messages {
     padding: 10px;
+  }
+  .placeholder-wrapper {
+    font-size: 12px;
+  }
+
+  .placeholder-input {
+    width: 100%;
   }
 }
 
@@ -219,4 +270,15 @@
 .parsed-response li {
   margin-left: 1.5rem;
   list-style-type: disc;
+}
+
+@media screen and (max-width: 1024px) {
+  .chat-area {
+    margin-top: 30px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .placeholder-wrapper {
+    font-size: 16px;
+  }
 }

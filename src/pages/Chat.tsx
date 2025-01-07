@@ -1,9 +1,12 @@
 import ChatArea from "../components/ChatArea/ChatArea";
-import "./Chat.css";
+import GridLightBackground from "../components/GridLightBackground/GridLightBackground";
 import Navbar from "../components/Navbar/Navbar";
+import "./Chat.css";
 const Chat = () => {
   return (
     <div>
+      <GridLightBackground />
+
       <div className="chat page-background">
         <Navbar
           content={"View Analytics → "}
