@@ -28,7 +28,7 @@ const Navbar = () => {
           <a href="#team">About Us</a>
         </li>
       </ul>
-      <Button content="Try Now  →" sm href="/chat" />
+      <Button content="Try Now  →" sm href="/graph" />
     </motion.div>
   );
 };
