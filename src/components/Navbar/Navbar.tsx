@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import Button from "../Button/Button";
 import Logo from "../Logo/Logo";
 import "./Navbar.css";
-const Navbar = () => {
+const Navbar = ({content , href , bool} : any) => {
   return (
     <motion.div
       className="navbar"
@@ -17,7 +17,8 @@ const Navbar = () => {
       }}
     >
       <Logo />
-      <ul className="nav">
+      {
+        bool && <ul className="nav">
         <li className="nav-link">
           <a href="#features">Features</a>
         </li>
@@ -28,7 +29,9 @@ const Navbar = () => {
           <a href="#team">About Us</a>
         </li>
       </ul>
-      <Button content="Try Now  →" sm href="/graph" />
+      }
+      
+      <Button content={content} sm href={href} />
     </motion.div>
   );
 };

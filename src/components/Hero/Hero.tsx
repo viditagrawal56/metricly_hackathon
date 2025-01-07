@@ -33,7 +33,7 @@ const Hero = () => {
               transition: { duration: 0.2 },
             }}
           >
-            <Button content="Try Now →" href="/graph" />
+            <Button content="Try Now →" href="/analytics" />
           </motion.div>
         </div>
       </motion.div>
