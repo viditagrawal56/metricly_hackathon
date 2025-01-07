@@ -335,8 +335,8 @@ const ChatArea: React.FC = () => {
                 value={input}
                 onChange={handleInputChange}
                 onKeyDown={handleKeyPress}
-                onFocus={() => setInput("")} // Optionally clear placeholder on focus
-                placeholder="" // Leave native placeholder empty to use custom one
+                onFocus={() => setInput("")}
+                placeholder=""
               />
             </div>
 

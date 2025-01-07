@@ -80,7 +80,7 @@
   border-radius: 12px;
   font-size: 1rem;
   transition: all 0.3s ease;
-  min-width: 200px;
+  min-width: 45vw;
   width: 100%;
 }
 
@@ -90,10 +90,10 @@
 }
 .placeholder-wrapper {
   position: absolute;
-  left: 50px; /* Adjust to align with input padding */
+  left: 50px;
   pointer-events: none;
-  color: #999; /* Placeholder color */
-  font-size: 16px; /* Match input font size */
+  color: #999;
+  font-size: 16px;
 }
 
 .input-field:focus {
@@ -244,6 +244,10 @@
   }
   .placeholder-wrapper {
     font-size: 12px;
+  }
+
+  .placeholder-input {
+    width: 100%;
   }
 }
 
