@@ -242,3 +242,18 @@
     max-width: 90%;
   }
 }
+
+.parsed-response p {
+  margin: 0.5rem 0;
+}
+
+.parsed-response strong {
+  display: block;
+  margin: 1rem 0 0.5rem;
+  font-size: 1.1rem;
+}
+
+.parsed-response li {
+  margin-left: 1.5rem;
+  list-style-type: disc;
+}

@@ -31,8 +31,12 @@
 .chart-wrapper > div {
   flex-grow: 1;
 }
-.chart-wrapper.distribution { grid-area: distribution; }
-.chart-wrapper.performance { grid-area: performance; }
+.chart-wrapper.distribution {
+  grid-area: distribution;
+}
+.chart-wrapper.performance {
+  grid-area: performance;
+}
 .chart-wrapper.engagement {
   grid-area: engagement;
   height: 500px;
@@ -67,7 +71,7 @@
     font-size: 0.875rem;
     margin-bottom: 8px;
   }
-.chart-wrapper.engagement {
+  .chart-wrapper.engagement {
     height: 350px;
   }
 }
