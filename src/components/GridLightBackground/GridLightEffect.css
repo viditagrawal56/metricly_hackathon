@@ -15,7 +15,7 @@
 }
 
 .grid-line {
-  stroke: rgba(255, 255, 255, 0.1);
+  stroke: rgba(255, 255, 255, 0.048);
   stroke-width: 1;
 }
 

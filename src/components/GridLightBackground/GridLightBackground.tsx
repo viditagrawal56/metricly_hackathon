@@ -79,7 +79,8 @@ const LightEffect: React.FC = () => {
   useEffect(() => {
     const startAnimation = () => {
       setIsAnimating(true);
-      const duration = Math.random() * 1000 + 2000; // Random duration between 2-5 seconds
+      const duration = Math.random() * 3000 + 2000; // Random duration between 2-5 seconds
+
       setTimeout(() => {
         setIsAnimating(false);
         scheduleNextAnimation();
@@ -87,7 +88,7 @@ const LightEffect: React.FC = () => {
     };
 
     const scheduleNextAnimation = () => {
-      const delay = Math.random() * 1000 + 3000; // Random delay between 1-6 seconds
+      const delay = Math.random() * 5000 + 2000; // Random delay between 1-6 seconds
       setTimeout(startAnimation, delay);
     };
 
@@ -102,7 +103,7 @@ const LightEffect: React.FC = () => {
       initial={{ top: "-15%" }}
       animate={{ top: "115%" }}
       transition={{
-        duration: Math.random() * 4 + 2, // Random duration between 2-5 seconds
+        duration: Math.random() * 3 + 2, // Random duration between 2-5 seconds
         ease: "easeInOut",
       }}
     />
