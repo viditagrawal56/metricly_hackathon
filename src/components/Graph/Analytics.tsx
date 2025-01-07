@@ -12,7 +12,9 @@ import {
   Legend,
 } from 'chart.js';
 import { Line, Bar, Pie } from 'react-chartjs-2';
-import './Graph.css';
+import './Analytics.css';
+import Navbar from '../Navbar/Navbar';
+
 
 ChartJS.register(
   CategoryScale,
@@ -144,7 +146,9 @@ function Graph() {
   };
 
   return (
-    <div className="graph-container">
+    <div>
+        <Navbar content="Chat With AI →" href="/chat" bool={false} />
+        <div className="graph-container">
       <div className="chart-wrapper distribution">
         <h2>Post Distribution</h2>
         <Pie data={processedData.distribution} options={chartOptions} />
@@ -178,6 +182,8 @@ function Graph() {
         <Line data={processedData.engagement} options={chartOptions} />
       </div>
     </div>
+    </div>
+    
   );
 }
 

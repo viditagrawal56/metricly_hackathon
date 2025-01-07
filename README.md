@@ -4,6 +4,7 @@ A modern analytics Application built with React, featuring intelligent insights 
 
 ## 🚀 Features
 - **Intelligent Insights**: Provides Intelligent Insights on social media using Generative AI
+- **Graphical Visualization**: Provides Graphical Visualization on the social media data
 - **Responsive Design**: Seamless experience across all devices
 - **Modern UI/UX**: Glassmorphism design with smooth animations
 - **Serverless Database**: Using Serverless Database for auto scaling and availability
@@ -15,6 +16,8 @@ A modern analytics Application built with React, featuring intelligent insights 
 - Framer Motion for animations
 - CSS3 with modern features
 - React Icons
+- react-chartjs-2
+- chart.js
 - Vite for build tooling
 - Astra DB
 - Langflow

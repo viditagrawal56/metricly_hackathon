@@ -1,10 +1,18 @@
+
 import ChatArea from "../components/ChatArea/ChatArea";
 import "./Chat.css";
+import Navbar from "../components/Navbar/Navbar";
 const Chat = () => {
   return (
-    <div className="chat">
+    <div>
+        
+
+       <div className="chat page-background">
+       <Navbar content = {"View Analytics → "} href = {"/analytics"} bool = {false} />
       <ChatArea />
     </div>
+    </div>
+   
   );
 };
 

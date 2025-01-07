@@ -1,5 +1,5 @@
 
-import Graph from '../components/Graph/Graph'
+import Graph from '../components/Graph/Analytics'
 
 function Chart() {
   return (
