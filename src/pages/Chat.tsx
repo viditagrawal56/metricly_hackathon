@@ -5,9 +5,10 @@ import Navbar from "../components/Navbar/Navbar";
 const Chat = () => {
   return (
     <div>
-        <Navbar content = {"View Analytics → "} href = {"/analytics"} bool = {false} />
+        
 
-       <div className="chat">
+       <div className="chat page-background">
+       <Navbar content = {"View Analytics → "} href = {"/analytics"} bool = {false} />
       <ChatArea />
     </div>
     </div>
