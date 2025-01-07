@@ -150,7 +150,7 @@ const ChatArea: React.FC = () => {
   useEffect(() => {
     const socket = new WebSocket("wss://metricly-hackathon.onrender.com");
     setWs(socket);
-
+    console.log(ws);
     socket.onopen = () => {
       console.log("WebSocket connection established");
     };
