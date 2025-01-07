@@ -3,6 +3,14 @@ import Button from "../Button/Button";
 import Logo from "../Logo/Logo";
 import "./Navbar.css";
 const Navbar = ({ content, href, bool }: any) => {
+
+interface NavbarProps {
+  content: string;
+  href: string;
+  bool: boolean;
+}
+
+const Navbar = ({ content, href, bool }: NavbarProps) => {
   return (
     <motion.div
       className="navbar"

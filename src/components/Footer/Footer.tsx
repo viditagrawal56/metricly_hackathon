@@ -7,7 +7,7 @@ const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer-content">
-      <motion.div 
+        <motion.div
           className="footer-section"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -15,16 +15,25 @@ const Footer = () => {
         >
           <div className="footer-brand">
             <Logo />
-            <p>Empowering your digital journey with intelligent analytics and insights.</p>
+            <p>
+              Empowering your digital journey with intelligent analytics and
+              insights.
+            </p>
             <div className="social-links">
-              <a href="https://github.com"><FaGithub /></a>
-              <a href="https://twitter.com"><FaTwitter /></a>
-              <a href="https://linkedin.com"><FaLinkedin /></a>
+              <a href="https://github.com">
+                <FaGithub />
+              </a>
+              <a href="https://twitter.com">
+                <FaTwitter />
+              </a>
+              <a href="https://linkedin.com">
+                <FaLinkedin />
+              </a>
             </div>
           </div>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           className="footer-section"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -33,13 +42,19 @@ const Footer = () => {
         >
           <h4>Quick Links</h4>
           <ul>
-            <li><a href="#features">Features</a></li>
-            <li><a href="#pricing">Pricing</a></li>
-            <li><a href="#team">About</a></li>
+            <li>
+              <a href="#features">Features</a>
+            </li>
+            <li>
+              <a href="#pricing">Pricing</a>
+            </li>
+            <li>
+              <a href="#team">About</a>
+            </li>
           </ul>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           className="footer-section"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -53,8 +68,8 @@ const Footer = () => {
           </ul>
         </motion.div>
       </div>
-      
-      <motion.div 
+
+      <motion.div
         className="footer-bottom"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}

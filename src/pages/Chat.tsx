@@ -6,7 +6,6 @@ const Chat = () => {
   return (
     <div>
       <GridLightBackground />
-
       <div className="chat page-background">
         <Navbar
           content={"View Analytics → "}

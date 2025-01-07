@@ -1,9 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { BiSend } from "react-icons/bi";
 import { motion, AnimatePresence } from "framer-motion";
-
 import "./ChatArea.css";
-import GridLightBackground from "../GridLightBackground/GridLightBackground";
 
 interface Message {
   type: "user" | "response" | "error";
@@ -19,6 +17,120 @@ const LoadingIndicator = () => (
     </div>
   </div>
 );
+const parseResponseText = (text: string) => {
+  const elements: React.ReactNode[] = [];
+  const lines = text.split("\n");
+
+  let currentList: React.ReactNode[] | null = null;
+  let isNumberedList = false;
+
+  // Helper function to parse bold text within any line
+  const parseBoldText = (line: string): React.ReactNode[] => {
+    const boldRegex = /\*\*(.+?)\*\*/g;
+    const parts = line.split(boldRegex);
+    return parts.map((part, i) =>
+      i % 2 === 1 ? <strong key={`bold-${i}`}>{part}</strong> : part
+    );
+  };
+
+  lines.forEach((line, index) => {
+    // Check for empty lines
+    if (line.trim() === "") {
+      if (currentList) {
+        elements.push(
+          isNumberedList ? 
+            <ol key={`list-${index}`}>{currentList}</ol> : 
+            <ul key={`list-${index}`}>{currentList}</ul>
+        );
+        currentList = null;
+      }
+      elements.push(<br key={`br-${index}`} />);
+      return;
+    }
+
+    // Check for numbered lists (e.g., "1.", "2.")
+    const numberedListMatch = line.match(/^\d+\.\s(.*)/);
+    if (numberedListMatch) {
+      if (!currentList || !isNumberedList) {
+        if (currentList) {
+          elements.push(<ul key={`list-${index}`}>{currentList}</ul>);
+        }
+        currentList = [];
+        isNumberedList = true;
+      }
+      currentList.push(
+        <li key={`list-item-${index}`}>
+          {parseBoldText(numberedListMatch[1])}
+        </li>
+      );
+      return;
+    }
+
+    // Check for bullet points
+    if (line.startsWith("- ")) {
+      if (!currentList || isNumberedList) {
+        if (currentList) {
+          elements.push(<ol key={`list-${index}`}>{currentList}</ol>);
+        }
+        currentList = [];
+        isNumberedList = false;
+      }
+      currentList.push(
+        <li key={`list-item-${index}`}>
+          {parseBoldText(line.slice(2))}
+        </li>
+      );
+      return;
+    }
+
+    // Check for statistics with parentheses
+    const statsMatch = line.match(/(.*)\(([\d,]+)\)/);
+    if (statsMatch) {
+      if (currentList) {
+        elements.push(
+          isNumberedList ? 
+            <ol key={`list-${index}`}>{currentList}</ol> : 
+            <ul key={`list-${index}`}>{currentList}</ul>
+        );
+        currentList = null;
+      }
+      elements.push(
+        <p key={`stats-${index}`} className="stats-line">
+          <span className="stats-label">
+            {parseBoldText(statsMatch[1].trim())}
+          </span>
+          <span className="stats-value">({statsMatch[2]})</span>
+        </p>
+      );
+      return;
+    }
+
+    // Default text handling (including bold parsing)
+    if (currentList) {
+      elements.push(
+        isNumberedList ? 
+          <ol key={`list-${index}`}>{currentList}</ol> : 
+          <ul key={`list-${index}`}>{currentList}</ul>
+      );
+      currentList = null;
+    }
+    elements.push(
+      <p key={`text-${index}`}>{parseBoldText(line)}</p>
+    );
+  });
+
+  // Handle any remaining list
+  if (currentList) {
+    elements.push(
+      isNumberedList ? 
+        <ol key="list-final">{currentList}</ol> : 
+        <ul key="list-final">{currentList}</ul>
+    );
+  }
+
+  return <div className="parsed-response">{elements}</div>;
+};
+
 
 const ChatArea: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([]);
@@ -47,7 +159,7 @@ const ChatArea: React.FC = () => {
   useEffect(() => {
     const socket = new WebSocket("wss://metricly-hackathon.onrender.com");
     setWs(socket);
-
+    console.log(ws);
     socket.onopen = () => {
       console.log("WebSocket connection established");
     };
@@ -210,6 +322,20 @@ const ChatArea: React.FC = () => {
                   </motion.div>
                 )}
               </AnimatePresence>
+    <div className="chat-area">
+      <div className="chat-container">
+        <div
+          className="messages"
+          style={{ overflowY: "auto", WebkitOverflowScrolling: "touch" }}
+        >
+          {messages.map((msg, index) => (
+            <div
+              key={index}
+              className={`message ${
+                msg.type === "user" ? "user-message" : "response-message"
+              }`}
+            >
+              {msg.type === "response" ? parseResponseText(msg.text) : msg.text}
             </div>
             <input
               type="text"
