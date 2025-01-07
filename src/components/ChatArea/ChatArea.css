@@ -85,7 +85,6 @@
 }
 .placeholder-wrapper {
   position: absolute;
-
   left: 50px; /* Adjust to align with input padding */
   pointer-events: none;
   color: #999; /* Placeholder color */

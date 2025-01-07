@@ -21,7 +21,7 @@ const GridLightBackground: React.FC = () => {
       }
 
       // Create dynamic light lines
-      const lineCount = 10;
+      const lineCount = 20;
       const newLines = Array.from({ length: lineCount }, (_, i) => ({
         id: i,
         left: Math.floor(Math.random() * (width / 30)) * 30,
@@ -79,7 +79,7 @@ const LightEffect: React.FC = () => {
   useEffect(() => {
     const startAnimation = () => {
       setIsAnimating(true);
-      const duration = Math.random() * 3000 + 2000; // Random duration between 2-5 seconds
+      const duration = Math.random() * 1000 + 2000; // Random duration between 2-5 seconds
       setTimeout(() => {
         setIsAnimating(false);
         scheduleNextAnimation();
@@ -87,7 +87,7 @@ const LightEffect: React.FC = () => {
     };
 
     const scheduleNextAnimation = () => {
-      const delay = Math.random() * 5000 + 3000; // Random delay between 1-6 seconds
+      const delay = Math.random() * 1000 + 3000; // Random delay between 1-6 seconds
       setTimeout(startAnimation, delay);
     };
 

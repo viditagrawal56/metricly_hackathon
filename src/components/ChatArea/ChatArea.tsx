@@ -1,9 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { BiSend } from "react-icons/bi";
 import { motion, AnimatePresence } from "framer-motion";
-
 import "./ChatArea.css";
-import GridLightBackground from "../GridLightBackground/GridLightBackground";
 
 interface Message {
   type: "user" | "response" | "error";
