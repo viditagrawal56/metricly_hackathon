@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { BiSend } from "react-icons/bi";
 import { motion, AnimatePresence } from "framer-motion";
 import "./ChatArea.css";
+import { HiOutlinePencilAlt } from "react-icons/hi";
 
 interface Message {
   type: "user" | "response" | "error";
@@ -136,20 +137,32 @@ const parseResponseText = (text: string) => {
 };
 
 const ChatArea: React.FC = () => {
-  const [messages, setMessages] = useState<Message[]>([]);
+  // Initialize messages from localStorage
+  const [messages, setMessages] = useState<Message[]>(() => {
+    const saved = localStorage.getItem('chatMessages');
+    return saved ? JSON.parse(saved) : [];
+  });
+  
   const [input, setInput] = useState<string>("");
   const [requestId, setRequestId] = useState<string>("");
   const [ws, setWs] = useState<WebSocket | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [showInitialContent, setShowInitialContent] = useState<boolean>(true);
+  const [showInitialContent, setShowInitialContent] = useState<boolean>(() => {
+    return !localStorage.getItem('chatMessages');
+  });
   const messagesEndRef = useRef<HTMLDivElement>(null);
-  const [responseLoading, setResponseLoading] = useState<boolean>(false);
+  const [responseLoading] = useState<boolean>(false);
   const [placeholderIndex, setPlaceholderIndex] = useState(0);
   const placeholders = [
     "Curious about your social impact? Ask away!",
     "Type here to unlock insights about your audience!",
     "Need help with engagement stats? Start typing!",
   ];
+
+  // Save messages to localStorage when they change
+  useEffect(() => {
+    localStorage.setItem('chatMessages', JSON.stringify(messages));
+  }, [messages]);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -159,36 +172,60 @@ const ChatArea: React.FC = () => {
     scrollToBottom();
   }, [messages]);
 
-  useEffect(() => {
+  // New chat function
+  const startNewChat = () => {
+    localStorage.removeItem('chatMessages');
+    setMessages([]);
+    setShowInitialContent(true);
+    setInput(""); 
+    setRequestId("");
+    
+    if (ws) {
+      ws.close();
+    }
+    const newSocket = initializeWebSocket();
+    setWs(newSocket);
+  };
+
+  // WebSocket initialization function
+  const initializeWebSocket = () => {
     const socket = new WebSocket("wss://metricly-hackathon.onrender.com");
-    setWs(socket);
-    console.log(ws);
+    
     socket.onopen = () => {
-      console.log("WebSocket connection established");
+      console.log("WebSocket connected");
     };
 
     socket.onmessage = (event: MessageEvent) => {
-      const data = JSON.parse(event.data);
-      if (data.type === "requestId") {
-        setRequestId(data.requestId);
-      } else if (data.type === "response") {
-        setIsLoading(false);
-        setMessages((prev) => [
-          ...prev,
-          { type: "response", text: data.message },
-        ]);
-      } else if (data.type === "error") {
-        setIsLoading(false);
-        setMessages((prev) => [...prev, { type: "error", text: data.message }]);
+      console.log("Received message:", event.data);
+      try {
+        const data = JSON.parse(event.data);
+        
+        if (data.type === "requestId") {
+          setRequestId(data.requestId);
+        } else if (data.type === "response") {
+          setIsLoading(false);
+          setMessages(prevMessages => [...prevMessages, {
+            type: "response" as const,
+            text: data.message
+          }]);
+        } else if (data.type === "error") {
+          setIsLoading(false);
+          setMessages(prevMessages => [...prevMessages, {
+            type: "error" as const,
+            text: data.message || "An error occurred"
+          }]);
+        }
+      } catch (error) {
+        console.error("Error processing message:", error);
       }
     };
-    socket.onclose = () => {
-      console.log("WebSocket connection closed");
-    };
 
-    return () => {
-      socket.close();
-    };
+    return socket;
+  };
+
+  useEffect(() => {
+    const socket = initializeWebSocket();
+    return () => socket.close();
   }, []);
 
   useEffect(() => {
@@ -212,37 +249,37 @@ const ChatArea: React.FC = () => {
 
   const sendMessage = async () => {
     if (input.trim() === "" || !requestId) return;
+    
+    setMessages(prevMessages => [...prevMessages, {
+      type: "user" as const,
+      text: input.trim()
+    }]);
+    
     setInput("");
     setIsLoading(true);
-    setMessages((prev) => [...prev, { type: "user", text: input }]);
     setShowInitialContent(false);
-    setResponseLoading(true);
-    try {
-      const response = await fetch(
-        "https://metricly-hackathon.onrender.com/chat",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            input_value: input,
-            requestId: requestId,
-          }),
-        }
-      );
 
-      if (response.ok) {
-        setResponseLoading(false);
-      }
+    try {
+      const response = await fetch("https://metricly-hackathon.onrender.com/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          input_value: input.trim(),
+          requestId: requestId
+        })
+      });
 
       if (!response.ok) {
         throw new Error("Failed to send message");
       }
+      
     } catch (error) {
-      console.error("Error sending message:", error);
+      console.error("Error:", error);
       setIsLoading(false);
-      setResponseLoading(false);
+      setMessages(prevMessages => [...prevMessages, {
+        type: "error" as const,
+        text: "Failed to send message"
+      }]);
     }
   };
 
@@ -267,6 +304,11 @@ const ChatArea: React.FC = () => {
     <>
       <div className="chat-area">
         <div className="chat-container">
+          <div className="chat-header">
+            <button onClick={startNewChat} className="new-chat-button">
+            <HiOutlinePencilAlt />
+            </button>
+          </div>
           <div
             className="messages"
             style={{ overflowY: "auto", WebkitOverflowScrolling: "touch" }}
