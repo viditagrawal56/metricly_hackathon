@@ -150,7 +150,7 @@ const ChatArea: React.FC = () => {
     return !localStorage.getItem('chatMessages');
   });
   const messagesEndRef = useRef<HTMLDivElement>(null);
-  const [responseLoading, setResponseLoading] = useState<boolean>(false);
+  const [responseLoading] = useState<boolean>(false);
   const [placeholderIndex, setPlaceholderIndex] = useState(0);
   const placeholders = [
     "Curious about your social impact? Ask away!",
