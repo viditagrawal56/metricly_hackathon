@@ -1,7 +1,6 @@
 .chat-area {
   display: flex;
   flex-direction: column;
-  padding: 1rem;
   min-height: 100vh;
   color: #ececec;
   padding: 0;
@@ -15,6 +14,7 @@
   width: 95%;
   max-width: 1000px;
   margin: 0 auto;
+  margin-bottom: 2rem;
   background: rgba(126, 90, 208, 0.116);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(10.5px);
