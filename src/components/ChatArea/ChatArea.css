@@ -29,6 +29,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 15px 20px;
+  padding-top: 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   margin-bottom: 20px;
 }
@@ -137,7 +138,7 @@
   position: absolute;
   left: 50px;
   pointer-events: none;
-  color: #999;
+  color: #bcbcbc;
   font-size: 16px;
 }
 

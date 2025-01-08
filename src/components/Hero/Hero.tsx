@@ -22,20 +22,15 @@ const Hero = () => {
           Transform social media data into actionable insights using
           cutting-edge technology
         </p>
-        <div className="btns">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.85, damping: 15 }}
-            whileHover={{
-              scale: 1.05,
-              y: -3,
-              transition: { duration: 0.2 },
-            }}
-          >
-            <Button content="Try Now →" sm href="/analytics" />
-          </motion.div>
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.85, damping: 15 }}
+          className="btns"
+        >
+          <Button content="Chat with AI →" sm href="/chat" />
+          <Button content="View Insights" alt sm href="/analytics" />
+        </motion.div>
       </motion.div>
       <motion.div
         initial={{ opacity: 0, y: -20 }}

@@ -137,18 +137,17 @@ const parseResponseText = (text: string) => {
 };
 
 const ChatArea: React.FC = () => {
-  // Initialize messages from localStorage
   const [messages, setMessages] = useState<Message[]>(() => {
-    const saved = localStorage.getItem('chatMessages');
+    const saved = localStorage.getItem("chatMessages");
     return saved ? JSON.parse(saved) : [];
   });
-  
+
   const [input, setInput] = useState<string>("");
   const [requestId, setRequestId] = useState<string>("");
   const [ws, setWs] = useState<WebSocket | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [showInitialContent, setShowInitialContent] = useState<boolean>(() => {
-    return !localStorage.getItem('chatMessages');
+    return !localStorage.getItem("chatMessages");
   });
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const [responseLoading] = useState<boolean>(false);
@@ -159,9 +158,8 @@ const ChatArea: React.FC = () => {
     "Need help with engagement stats? Start typing!",
   ];
 
-  // Save messages to localStorage when they change
   useEffect(() => {
-    localStorage.setItem('chatMessages', JSON.stringify(messages));
+    localStorage.setItem("chatMessages", JSON.stringify(messages));
   }, [messages]);
 
   const scrollToBottom = () => {
@@ -172,14 +170,13 @@ const ChatArea: React.FC = () => {
     scrollToBottom();
   }, [messages]);
 
-  // New chat function
   const startNewChat = () => {
-    localStorage.removeItem('chatMessages');
+    localStorage.removeItem("chatMessages");
     setMessages([]);
     setShowInitialContent(true);
-    setInput(""); 
+    setInput("");
     setRequestId("");
-    
+
     if (ws) {
       ws.close();
     }
@@ -190,7 +187,7 @@ const ChatArea: React.FC = () => {
   // WebSocket initialization function
   const initializeWebSocket = () => {
     const socket = new WebSocket("wss://metricly-hackathon.onrender.com");
-    
+
     socket.onopen = () => {
       console.log("WebSocket connected");
     };
@@ -199,21 +196,27 @@ const ChatArea: React.FC = () => {
       console.log("Received message:", event.data);
       try {
         const data = JSON.parse(event.data);
-        
+
         if (data.type === "requestId") {
           setRequestId(data.requestId);
         } else if (data.type === "response") {
           setIsLoading(false);
-          setMessages(prevMessages => [...prevMessages, {
-            type: "response" as const,
-            text: data.message
-          }]);
+          setMessages((prevMessages) => [
+            ...prevMessages,
+            {
+              type: "response" as const,
+              text: data.message,
+            },
+          ]);
         } else if (data.type === "error") {
           setIsLoading(false);
-          setMessages(prevMessages => [...prevMessages, {
-            type: "error" as const,
-            text: data.message || "An error occurred"
-          }]);
+          setMessages((prevMessages) => [
+            ...prevMessages,
+            {
+              type: "error" as const,
+              text: data.message || "An error occurred",
+            },
+          ]);
         }
       } catch (error) {
         console.error("Error processing message:", error);
@@ -249,37 +252,45 @@ const ChatArea: React.FC = () => {
 
   const sendMessage = async () => {
     if (input.trim() === "" || !requestId) return;
-    
-    setMessages(prevMessages => [...prevMessages, {
-      type: "user" as const,
-      text: input.trim()
-    }]);
-    
+
+    setMessages((prevMessages) => [
+      ...prevMessages,
+      {
+        type: "user" as const,
+        text: input.trim(),
+      },
+    ]);
+
     setInput("");
     setIsLoading(true);
     setShowInitialContent(false);
 
     try {
-      const response = await fetch("https://metricly-hackathon.onrender.com/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          input_value: input.trim(),
-          requestId: requestId
-        })
-      });
+      const response = await fetch(
+        "https://metricly-hackathon.onrender.com/chat",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            input_value: input.trim(),
+            requestId: requestId,
+          }),
+        }
+      );
 
       if (!response.ok) {
         throw new Error("Failed to send message");
       }
-      
     } catch (error) {
       console.error("Error:", error);
       setIsLoading(false);
-      setMessages(prevMessages => [...prevMessages, {
-        type: "error" as const,
-        text: "Failed to send message"
-      }]);
+      setMessages((prevMessages) => [
+        ...prevMessages,
+        {
+          type: "error" as const,
+          text: "Failed to send message",
+        },
+      ]);
     }
   };
 
@@ -306,7 +317,7 @@ const ChatArea: React.FC = () => {
         <div className="chat-container">
           <div className="chat-header">
             <button onClick={startNewChat} className="new-chat-button">
-            <HiOutlinePencilAlt />
+              <HiOutlinePencilAlt />
             </button>
           </div>
           <div
