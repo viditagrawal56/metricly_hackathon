@@ -6,6 +6,9 @@
   --tertiary-color: #ff6b6b;
   --background-color: #0f0c29;
   --text-color: #ffffff;
+  --c1: rgba(168, 239, 255, 1);
+  --c2: rgba(168, 239, 255, 0.1);
+  --d: 2500ms;
 }
 
 .animated-text {
@@ -13,13 +16,14 @@
 }
 
 .analytics-page {
-  padding: 2rem;
+  padding-top: 1px;
   background: linear-gradient(135deg, #0f0c29, #2c0c77a5, #24243e);
 }
 
 .analytics-header {
   text-align: center;
   margin-bottom: 2rem;
+  margin-top: -3rem;
 }
 
 .analytics-header h1 {
@@ -52,12 +56,15 @@
   max-width: 1400px;
   margin: 0 auto;
 }
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: true;
+}
+
 .chart-wrapper {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(168, 239, 255, 0.1);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 16px;
   padding: 16px;
   height: 400px;
   width: 100%;
@@ -65,61 +72,30 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: transform 0.2s ease;
+
+  animation: none;
 }
 
-.chart-wrapper::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    circle,
-    rgba(255, 255, 255, 0.1),
-    rgba(255, 255, 255, 0.05),
-    transparent
-  );
-  opacity: 0.5;
-  pointer-events: none;
+.chart-wrapper:hover {
+  border: 1px solid;
+  border-image: conic-gradient(
+      from var(--angle),
+      var(--c2),
+      var(--c1) 0.1turn,
+      var(--c1) 0.15turn,
+      var(--c2) 0.25turn
+    )
+    30;
+  animation: borderRotate var(--d) linear infinite forwards;
 }
 
-.star-container {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-}
-
-.star {
-  position: absolute;
-  height: 10px;
-
-  background-color: #fff; /* bg-white */
-  border-radius: 50%; /* rounded-full */
-  box-shadow: 0 0 8px 2px white;
-  animation: starBorderMove 6s linear infinite;
-}
-
-@keyframes starBorderMove {
-  0% {
-    top: 0;
-    left: 0;
-  }
-  25% {
-    top: 0;
-    left: 100%;
-  }
-  50% {
-    top: 100%;
-    left: 100%;
-  }
-  75% {
-    top: 100%;
-    left: 0;
-  }
+/* Keyframe animation for spinning the border */
+@keyframes borderRotate {
   100% {
-    top: 0;
-    left: 0;
+    --angle: 420deg;
   }
 }
+
 .chart-wrapper h2 {
   color: #ececec;
   font-size: 1rem;
@@ -139,6 +115,7 @@
   grid-area: engagement;
   height: 500px;
 }
+
 @media (max-width: 1024px) {
   .graph-container {
     grid-template-areas:
@@ -155,6 +132,7 @@
     height: 400px;
   }
 }
+
 @media (max-width: 768px) {
   .animated-text {
     font-size: 1.2rem !important;

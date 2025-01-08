@@ -198,9 +198,6 @@ function Graph() {
           variants={itemVariants}
           whileHover={{ scale: 1.02 }}
         >
-          <div className="star-container">
-            <div className="star"></div>
-          </div>
           <h2>Post Distribution</h2>
           <Pie data={processedData.distribution} options={chartOptions} />
         </motion.div>
@@ -210,9 +207,6 @@ function Graph() {
           variants={itemVariants}
           whileHover={{ scale: 1.02 }}
         >
-          <div className="star-container">
-            <div className="star"></div>
-          </div>
           <h2>Performance by Type</h2>
           <Bar
             data={{
