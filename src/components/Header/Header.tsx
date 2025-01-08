@@ -5,7 +5,7 @@ import "./Header.css";
 const Header = () => {
   return (
     <header className="header">
-      <Navbar content={"Chat with AI → "} href={"/analytics"} bool={true} />
+      <Navbar content={"Chat with AI → "} href={"/chat"} bool={true} />
       <Hero />
     </header>
   );
