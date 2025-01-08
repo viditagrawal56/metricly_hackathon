@@ -1,6 +1,7 @@
 .chat-area {
   display: flex;
   flex-direction: column;
+  padding: 1rem;
   min-height: 100vh;
   color: #ececec;
   padding: 0;

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { BiSend } from "react-icons/bi";
 import { motion, AnimatePresence } from "framer-motion";
 import "./ChatArea.css";
+import { HiOutlinePencilAlt } from "react-icons/hi";
 
 interface Message {
   type: "user" | "response" | "error";
@@ -305,7 +306,7 @@ const ChatArea: React.FC = () => {
         <div className="chat-container">
           <div className="chat-header">
             <button onClick={startNewChat} className="new-chat-button">
-              New Chat
+            <HiOutlinePencilAlt />
             </button>
           </div>
           <div
