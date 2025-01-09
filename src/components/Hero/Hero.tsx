@@ -12,7 +12,7 @@ const Hero = () => {
         transition={{ duration: 0.8 }}
         className="hero-content"
       >
-        <p className="pill">✨ Powered by Langflow and DataStax</p>
+        <p className="pill">✨ Powered by Langflow and AstraDB</p>
         <h1>
           Modern Analytics
           <br />
