@@ -20,7 +20,7 @@ const Footer = () => {
               insights.
             </p>
             <div className="social-links">
-              <a href="https://github.com">
+              <a href="https://github.com/viditagrawal56/metricly_hackathon">
                 <FaGithub />
               </a>
               <a href="https://twitter.com">
