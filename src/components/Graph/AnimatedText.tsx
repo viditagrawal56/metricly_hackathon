@@ -23,8 +23,6 @@ export const AnimatedText: React.FC = () => {
 
   return (
     <div>
-      {" "}
-      {/* Fixed height container */}
       <AnimatePresence mode="wait">
         <motion.p
           key={index}
