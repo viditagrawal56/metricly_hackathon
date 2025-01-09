@@ -38,7 +38,7 @@ const Hero = () => {
         transition={{ duration: 0.8 }}
         className="hero-img"
       >
-        <img src={HeroImg} alt="hero" />
+        <img loading="eager" src={HeroImg} alt="hero" />
       </motion.div>
     </div>
   );

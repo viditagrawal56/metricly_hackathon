@@ -50,6 +50,7 @@ const Team = () => {
               <div className="profile-image-wrapper">
                 {member.image && (
                   <img
+                    loading="lazy"
                     src={member.image}
                     alt={member.name}
                     className="profile-image"

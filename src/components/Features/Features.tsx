@@ -1,6 +1,7 @@
 import Card from "../Card/Card";
 import cardData from "./cardData";
 import { motion } from "framer-motion";
+import featuresBg from "../../assets/features-bg.png";
 import "./Features.css";
 
 const Features = () => {
@@ -21,6 +22,7 @@ const Features = () => {
         viewport={{ once: true }}
         className="features-title"
       >
+        <img loading="lazy" src={featuresBg} alt="" className="features-bg" />
         <h1>Features That Work For Your Future</h1>
         <p>
           Check out our amazing features and experience the power of Metricly

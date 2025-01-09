@@ -30,6 +30,7 @@
   align-items: center;
   gap: 8px;
 }
+
 .hero-content h1 {
   padding: 20px 0px;
   font-weight: 500;
@@ -95,6 +96,9 @@
   }
 }
 @media (max-width: 400px) {
+  .hero {
+    padding: 20px 20px 0;
+  }
   .hero-content .pill {
     font-size: 14px;
   }

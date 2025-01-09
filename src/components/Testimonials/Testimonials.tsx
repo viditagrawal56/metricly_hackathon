@@ -36,6 +36,7 @@ const Testimonials = () => {
               </div>
               <div className="testimonial-header">
                 <img
+                  loading="lazy"
                   src={testimonial.avatar}
                   alt={testimonial.name}
                   className="testimonial-avatar"
