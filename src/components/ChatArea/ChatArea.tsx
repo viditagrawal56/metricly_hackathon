@@ -142,11 +142,15 @@ const ChatArea: React.FC = () => {
     return saved ? JSON.parse(saved) : [];
   });
 
+  const [showInitialContent, setShowInitialContent] = useState<boolean>(() => {
+    const saved = localStorage.getItem("chatMessages");
+    return saved ? JSON.parse(saved).length === 0 : true;
+  });
+
   const [input, setInput] = useState<string>("");
   const [requestId, setRequestId] = useState<string>("");
   const [ws, setWs] = useState<WebSocket | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [showInitialContent, setShowInitialContent] = useState<boolean>(true);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const [responseLoading] = useState<boolean>(false);
   const [placeholderIndex, setPlaceholderIndex] = useState(0);
