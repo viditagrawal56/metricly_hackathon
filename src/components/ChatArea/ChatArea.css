@@ -188,6 +188,8 @@
 .social-words {
   display: flex;
   gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .social-words span {
@@ -325,5 +327,15 @@
 @media screen and (min-width: 768px) {
   .placeholder-wrapper {
     font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .initial-content h2 {
+    font-size: 1.5rem;
+  }
+
+  .social-words span {
+    font-size: 0.7rem;
   }
 }

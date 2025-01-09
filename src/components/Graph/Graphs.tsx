@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -14,6 +15,7 @@ import {
 import { Line, Bar, Pie } from "react-chartjs-2";
 import "./Graphs.css";
 import Navbar from "../Navbar/Navbar";
+import { AnimatedText } from "./AnimatedText";
 
 ChartJS.register(
   CategoryScale,
@@ -30,6 +32,7 @@ ChartJS.register(
 const chartColors = {
   primary: "#bb9bff",
   secondary: "#e9dfff",
+  tertiary: "#ff6b6b",
   text: "#ececec",
   background: "rgba(255, 255, 255, 0.1)",
 };
@@ -125,7 +128,7 @@ function Graph() {
           backgroundColor: [
             chartColors.primary,
             chartColors.secondary,
-            "rgba(236, 236, 236, 0.6)",
+            chartColors.tertiary,
           ],
         },
       ],
@@ -137,28 +140,73 @@ function Graph() {
           label: "Likes",
           data: data.map((item) => item.Likes).slice(-30),
           borderColor: chartColors.primary,
+          backgroundColor: `${chartColors.primary}33`,
           tension: 0.4,
+          fill: true,
         },
         {
           label: "Shares",
           data: data.map((item) => item.Shares).slice(-30),
           borderColor: chartColors.secondary,
+          backgroundColor: `${chartColors.secondary}33`,
           tension: 0.4,
+          fill: true,
         },
       ],
     },
   };
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+      },
+    },
+  };
+
   return (
-    <div>
+    <div className="analytics-page">
       <Navbar content="Chat With AI →" href="/chat" bool={false} />
-      <div className="graph-container">
-        <div className="chart-wrapper distribution">
+      <div className="analytics-header">
+        <h1>Analytics Dashboard</h1>
+        <div className="analytics-text">
+          <AnimatedText />
+        </div>
+      </div>
+      <motion.div
+        className="graph-container"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        <motion.div
+          className="chart-wrapper distribution"
+          variants={itemVariants}
+          whileHover={{ scale: 1.02 }}
+        >
           <h2>Post Distribution</h2>
           <Pie data={processedData.distribution} options={chartOptions} />
-        </div>
+        </motion.div>
 
-        <div className="chart-wrapper performance">
+        <motion.div
+          className="chart-wrapper performance"
+          variants={itemVariants}
+          whileHover={{ scale: 1.02 }}
+        >
           <h2>Performance by Type</h2>
           <Bar
             data={{
@@ -175,19 +223,30 @@ function Graph() {
                       typePosts.length
                     );
                   }),
-                  backgroundColor: chartColors.primary,
+                  backgroundColor: [
+                    chartColors.primary,
+                    chartColors.secondary,
+                    chartColors.tertiary,
+                  ],
                 },
               ],
             }}
             options={chartOptions}
           />
-        </div>
+        </motion.div>
 
-        <div className="chart-wrapper engagement">
+        <motion.div
+          className="chart-wrapper engagement"
+          variants={itemVariants}
+          whileHover={{ scale: 1.02 }}
+        >
+          <div className="star-container">
+            <div className="star"></div>
+          </div>
           <h2>Engagement Trends</h2>
           <Line data={processedData.engagement} options={chartOptions} />
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </div>
   );
 }

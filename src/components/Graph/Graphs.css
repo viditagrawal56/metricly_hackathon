@@ -1,3 +1,46 @@
+:root {
+  --primary-color: #6a11cb;
+  --secondary-color: #2575fc;
+  --tertiary-color: #ff6b6b;
+  --background-color: #0f0c29;
+  --text-color: #ffffff;
+  --c1: rgba(168, 239, 255, 1);
+  --c2: rgba(168, 239, 255, 0.1);
+  --d: 2500ms;
+}
+
+.animated-text {
+  font-size: 1.4rem !important;
+}
+
+.analytics-page {
+  padding-top: 1px;
+  background: linear-gradient(135deg, #0f0c29, #2c0c77a5, #24243e);
+}
+
+.analytics-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.analytics-header h1 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(
+    90deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.analytics-text {
+  height: 3rem;
+  overflow: hidden;
+}
+
 .graph-container {
   display: grid;
   grid-template-areas:
@@ -10,18 +53,26 @@
   max-width: 1400px;
   margin: 0 auto;
 }
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: true;
+}
+
 .chart-wrapper {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(168, 239, 255, 0.1);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 16px;
   padding: 16px;
   height: 400px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: transform 0.2s ease;
+
+  animation: none;
 }
+
 .chart-wrapper h2 {
   color: #ececec;
   font-size: 1rem;
@@ -41,6 +92,7 @@
   grid-area: engagement;
   height: 500px;
 }
+
 @media (max-width: 1024px) {
   .graph-container {
     grid-template-areas:
@@ -57,7 +109,16 @@
     height: 400px;
   }
 }
+
 @media (max-width: 768px) {
+  .animated-text {
+    font-size: 1.2rem !important;
+  }
+
+  .analytics-header h1 {
+    font-size: 1.8rem;
+  }
+
   .graph-container {
     padding: 12px;
     gap: 20px;
@@ -77,6 +138,14 @@
 }
 
 @media (max-width: 480px) {
+  .analytics-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .animated-text {
+    font-size: 1rem !important;
+  }
+
   .graph-container {
     gap: 16px;
   }
