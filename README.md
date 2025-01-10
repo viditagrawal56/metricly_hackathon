@@ -9,6 +9,15 @@ A modern analytics Application built with React, featuring intelligent insights 
 - **Modern UI/UX**: Glassmorphism design with smooth animations
 - **Serverless Database**: Using Serverless Database for auto scaling and availability
 
+## Langflow
+- **Vectorizing and Loading the dataset in AstraDB**
+  
+![File_Loading_Flow](https://github.com/user-attachments/assets/70a17597-7f7e-41af-84d9-e545b04fca88)
+
+- **Feeding User input and contextual data from AstraDB to Groq LLM**
+  
+![LLM_Embedding](https://github.com/user-attachments/assets/46ae3733-d814-4ce3-806c-6276e7d83f46)
+
 ## 🛠️ Tech Stack
 - Websocket 
 - Express
