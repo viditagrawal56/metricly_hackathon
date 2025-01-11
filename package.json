@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@types/react-slick": "^0.23.13",
+    "@vercel/analytics": "^1.4.1",
     "chart.js": "^4.4.7",
     "framer-motion": "^11.15.0",
     "lucide-react": "^0.469.0",
